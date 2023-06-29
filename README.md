@@ -1,5 +1,5 @@
 <h1 align="center"> 
-	Template Projeto NextJs 13 APP diretório.
+	Projeto de Timer com Nextjs 13 App Router, React, Typescript e Tailwindcss.
 </h1>
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
@@ -8,16 +8,22 @@
  <a href="#-instalação">Instalações</a> •
  <a href="#-funcionalidades">Funcionalidades</a> •
  <a href="#-deploy">Deploy</a> •
+ <a href="#-good-habits">Good habits</a> •
  <a href="#-autor">Autor</a> • 
  <a href="#-licença">Licença</a>
 </p>
 
 &nbsp;
+
+![react-post-with-comment](https://github.com/LivioAlvarenga/react-post-with-comment/blob/main/web/public/Monitor_laptop_Tablet_Celular-Fundos_limpos.png?raw=true#vitrinedev)
+
+![react-post-with-comment](https://github.com/LivioAlvarenga/react-post-with-comment/blob/main/web/public/phone-hand-laptop.png?raw=true)
+
 <a id="-sobre-o-projeto"></a>
 
 ## 💻 Sobre o projeto
 
-🚀 Inicie rapidamente seu projeto com nosso template para NextJs 13. Pré-configurado com NodeJs, TypeScript, JavaScript, React, Tailwind, Dotenv, ZodJs, EsLint e Prettier, este template acelera seu fluxo de trabalho e permite que você se concentre no que realmente importa.
+🚀 Em construção.
 
 &nbsp;
 
@@ -30,7 +36,7 @@
 <p>
 
 <p align="center">
-  <a href= "https://vercel.com/"><img alt="deploy badge Vercel" height=40 src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/vercel-badge.svg"></a>
+  <a href= "#"><img alt="deploy badge Vercel" height=40 src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/vercel-badge.svg"></a>
 <p>
 
 &nbsp;
@@ -38,14 +44,15 @@
 ---
 
 &nbsp;
+
 <a id="-vitrine-dev"></a>
 
 ## 📺 Vitrine Dev
 
-| :placard: Vitrine.Dev |                                                                                                        |
-| --------------------- | ------------------------------------------------------------------------------------------------------ | 
-| :sparkles: Nome       | **Template**                                                                                           |
-| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, Tailwind, Dotenv, ZodJs, EsLint e prettier. |     |
+| :placard: Vitrine.Dev |                                                                                                |
+| --------------------- | ---------------------------------------------------------------------------------------------- |
+| :sparkles: Nome       | **Projeto de Timer com Nextjs 13 App Router, React, Typescript e Tailwindcss.**                |
+| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, Tailwind, ZodJs, EsLint e prettier. |
 
 ---
 
@@ -66,8 +73,8 @@ As seguintes ferramentas foram usadas na construção do projeto
   <a href= "https://nextjs.org/"><img alt="Next.js badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/d0444795ba750206fa52326b03a097df76171407/files/nextjs-badge.svg"></a>
   <a href= "https://reactjs.org/"><img alt="React badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/d0444795ba750206fa52326b03a097df76171407/files/react-badge.svg"></a>
   <a href= "https://tailwindcss.com/"><img alt="Tailwind CSS badge" src="https://img.shields.io/static/v1?logoWidth=15&logoColor=06b6d4&logo=Tailwind CSS&label=Style&message=Tailwind CSS&color=06b6d4"></a>
-  <a href= "https://www.dotenv.org/" target="_blank" rel="noopener noreferrer"><img alt="Dotenv badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/4eed338fdcd547570ed365f2b344e43c8202e88f/files/dotenv-badge.svg"></a>
   <a href= "https://zod.dev/" target="_blank" rel="noopener noreferrer"><img alt="ZOD badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/7caba2f743ee9b61f0225a22da57466ecb67097c/files/zod-badge.svg"></a>
+  <a href= "https://www.figma.com/file/rgvSDkLZwAPEUJB1gX2AFR/Ignite-Timer-(Community)-(Copy)?node-id=0%3A1&mode=dev"><img alt="link projeto no figma" src="https://github.com/LivioAlvarenga/LivioAlvarenga/blob/main/files/figma-badge.svg"></a>
   <a href= "https://code.visualstudio.com/download" target="_blank" rel="noopener noreferrer"><img alt="vscode download" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/vsCode-badge.svg"></a>
   <a href= "https://github.com/prettier/prettier" target="_blank" rel="noopener noreferrer"><img alt="code formatter prettier" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/prettier-badge.svg"></a>
   <a href= "https://eslint.org/" target="_blank" rel="noopener noreferrer"><img alt="code standardization eslint" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/59575ed19b13121cd113cfc66a71f18dea210c79/files/eslint-badge.svg"></a>
@@ -108,18 +115,6 @@ npx create-next-app@latest
 ```
 
 _Create **`.nvmrc`** file with version of NodeJs to use in project_
-&nbsp;
-
-### **.env** architecture
-
-```bash
-npm install dotenv # Install dotenv to use environment variables in NodeJs
-```
-
-_Create **`.env`** file with all environment variables and gitignore this file_
-
-_Edit **`.env.example`** file with all environment variables and not gitignore this file_
-
 &nbsp;
 
 ### Configurando **ESlint and Prettier**
@@ -184,14 +179,18 @@ npm install zod # Install zod to use types in NodeJs and validate data
 - Uso de Eslint para padronização de código;
 - Uso de Prettier para padronização de código;
 - Uso de Dotenv para variáveis de ambiente;
+- Uso de TailwindCSS para estilização;
+- Uso de NextJs para SSR;
+- Uso de TypeScript para tipagem estática;
+- Uso de NextJs com App Router para rotas;
 
 &nbsp;
 
 ### 🧭 Rodando a aplicação (Modo desenvolvimento)
 
 ```bash
-git clone https://github.com/livioalvarenga/Template-Api-Rest-Node-Docker-Prisma.git # Clone este repositório
-cd Template-Api-Rest-Node-Docker-Prisma # Acesse a pasta do projeto no seu terminal/cmd
+git clone https://github.com/LivioAlvarenga/pomodoro-timer # Clone este repositório
+cd pomodoro-timer # Acesse a pasta do projeto no seu terminal/cmd
 npm install # Instale as dependências
 npm run dev # Execute a aplicação em modo de desenvolvimento, a aplicação será aberta na porta:3000 - acesse http://localhost:3000
 
@@ -227,6 +226,25 @@ O deploy foi realizado na plataforma Vercel.com.
 As variáveis de ambiente configuradas incluem:
 
 - ...
+
+---
+
+&nbsp;
+<a id="-good-habits"></a>
+
+## ✅ Good Habits
+
+&nbsp;
+
+### ❗ 1 - em produção...
+
+&nbsp;
+
+&nbsp;
+
+### ❗ 2 - em produção...
+
+&nbsp;
 
 ---
 
