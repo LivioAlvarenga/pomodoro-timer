@@ -1,4 +1,8 @@
-import { Inter, Playfair_Display as Playfair } from 'next/font/google'
+import {
+  Inter,
+  Playfair_Display as Playfair,
+  Roboto_Mono as RobotoMono,
+} from 'next/font/google'
 // import localFont from 'next/font/local'
 
 const inter400 = Inter({
@@ -22,6 +26,13 @@ const playfair400 = Playfair({
   display: 'swap',
 })
 
+const robotoMono700 = RobotoMono({
+  weight: '700',
+  subsets: ['latin'],
+  variable: '--font-robotoMono700',
+  display: 'swap',
+})
+
 // To use personal fonts, add localFontName.woff2 in web/src/styles/fonts folder
 // const localFont = localFont({
 //   src: './localFontName.woff2',
@@ -31,4 +42,4 @@ const playfair400 = Playfair({
 // })
 // Don't forget to export localFont below
 
-export { inter400, inter700, playfair400 }
+export { inter400, inter700, playfair400, robotoMono700 }
