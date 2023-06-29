@@ -30,7 +30,7 @@ export function Footer() {
     </svg>
   )
   return (
-    <footer className="flex w-full flex-col items-center bg-dark-500 py-10">
+    <footer className="flex w-full flex-col items-center bg-gray-800 py-10">
       <div className="wrapper flex flex-wrap items-center justify-around gap-5 py-5 lg:gap-10">
         <Link
           href="https://www.livioalvarenga.com"
