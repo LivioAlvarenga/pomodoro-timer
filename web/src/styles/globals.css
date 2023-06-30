@@ -28,6 +28,11 @@ body {
     @apply bg-dark-300;
   }
 
+  /* List of input without arrows in chrome */
+  ::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
+
   /* CONTAINER - Usado para dar um espaçamento esquerdo e direito */
   .wrapper {
     @apply mx-auto w-[96%] max-w-7xl;

@@ -85,7 +85,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${inter400.variable} ${inter700.variable} ${playfair400.variable} ${robotoMono700.variable} scroll-smooth bg-dark-700 font-inter400 text-base font-normal leading-normal tracking-[.031rem] text-gray-300 selection:bg-primary selection:text-tWhite`}
+        className={`${inter400.variable} ${inter700.variable} ${playfair400.variable} ${robotoMono700.variable} flex min-h-screen flex-col scroll-smooth bg-dark-700 font-inter400 text-base font-normal leading-normal tracking-[.031rem] text-gray-300 selection:bg-primary selection:text-tWhite`}
       >
         <Header />
         {children}
