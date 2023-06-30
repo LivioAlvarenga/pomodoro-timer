@@ -50,7 +50,7 @@ export default function Home() {
             <span>minutos.</span>
           </div>
 
-          <div className="headline2 flex gap-4 font-robotoMono700 text-gray-100 sm:text-[10rem] ">
+          <div className="headline2 flex gap-4 font-robotoMono700 text-gray-100 sm:text-[10rem] sm:leading-tight">
             <span className="rounded-lg bg-gray-700 px-4 py-1">0</span>
             <span className="rounded-lg bg-gray-700 px-4 py-1">0</span>
             <span className="flex w-10 justify-center overflow-hidden py-1 text-primary">
