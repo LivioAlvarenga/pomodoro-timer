@@ -236,9 +236,62 @@ As variáveis de ambiente configuradas incluem:
 
 &nbsp;
 
-### ❗ 1 - em produção...
+### ❗ 1 - Formulários controlled Vz uncontrolled
 
 &nbsp;
+
+* Formulários Controlados
+
+Os formulários controlados são adequados quando você precisa de controle granular sobre o estado de cada campo de entrada. No entanto, em formulários com muitos campos, isso pode tornar-se problemático, pois o React precisa atualizar e renderizar novamente o componente a cada mudança em qualquer campo, o que pode prejudicar a performance.
+
+```jsx
+import React, { useState } from "react";
+
+export function formControlled() {
+  const [nome, setNome] = useState("");
+
+  const handleInputChange = (event) => {
+    setNome(event.target.value);
+  };
+
+  return (
+    <form>
+      <label>
+        Nome:
+        <input type="text" value={nome} onChange={handleInputChange} />
+      </label>
+      <input type="submit" value="Enviar" />
+    </form>
+  );
+}
+```
+
+* Formulários Não Controlados
+
+Os formulários não controlados são úteis quando você não precisa rastrear o estado de cada campo de entrada em tempo real. Eles são particularmente úteis para formulários simples com poucos campos. No entanto, eles podem ser menos adequados para formulários complexos ou dinâmicos, pois você tem menos controle sobre o estado individual dos campos de entrada.
+
+```jsx
+import React, { useRef } from "react";
+
+export function FormUncontrolled() {
+  const inputRef = useRef();
+
+  const handleSubmit = (event) => {
+    alert("Um nome foi enviado: " + inputRef.current.value);
+    event.preventDefault();
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Nome:
+        <input type="text" ref={inputRef} />
+      </label>
+      <input type="submit" value="Enviar" />
+    </form>
+  );
+}
+```
 
 &nbsp;
 
