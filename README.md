@@ -240,7 +240,7 @@ As variáveis de ambiente configuradas incluem:
 
 &nbsp;
 
-* Formulários Controlados
+- Formulários Controlados
 
 Os formulários controlados são adequados quando você precisa de controle granular sobre o estado de cada campo de entrada. No entanto, em formulários com muitos campos, isso pode tornar-se problemático, pois o React precisa atualizar e renderizar novamente o componente a cada mudança em qualquer campo, o que pode prejudicar a performance.
 
@@ -266,7 +266,7 @@ export function formControlled() {
 }
 ```
 
-* Formulários Não Controlados
+- Formulários Não Controlados
 
 Os formulários não controlados são úteis quando você não precisa rastrear o estado de cada campo de entrada em tempo real. Eles são particularmente úteis para formulários simples com poucos campos. No entanto, eles podem ser menos adequados para formulários complexos ou dinâmicos, pois você tem menos controle sobre o estado individual dos campos de entrada.
 
@@ -295,7 +295,416 @@ export function FormUncontrolled() {
 
 &nbsp;
 
-### ❗ 2 - em produção...
+### ❗ 2 - O hook useEffect
+
+&nbsp;
+
+O `useEffect` é um `Hook` em React que permite você executar efeitos colaterais em componentes funcionais. Efeitos colaterais podem ser qualquer coisa que interage com o mundo fora da função do componente, como por exemplo, realizar requisições HTTP, interagir com a API do navegador, realizar assinaturas e timers, e até manipular o DOM diretamente.
+
+Por padrão, o `useEffect` é executado após cada renderização. Isso significa que ele é executado após a primeira renderização do componente. E depois, toda vez que o componente for atualizado, o `useEffect` será executado novamente.
+
+No entanto, se você passar um `array vazio []` como o segundo argumento para `useEffect`, isso diz ao React que seu efeito não depende de nenhum valor das props ou do estado, e então ele irá evitar rodar o efeito após cada atualização. Ele apenas rodará uma vez após a primeira renderização
+
+```jsx
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+export function Teste() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("https://api.github.com/users/octocat")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error("Algo deu errado!", error);
+      });
+  }, []); // A dependência vazia [] significa que este useEffect será executado apenas uma vez
+
+  if (data) {
+    return (
+      <div>
+        <h1>{data.name}</h1>
+        <p>{data.bio}</p>
+      </div>
+    );
+  } else {
+    return <div>Carregando...</div>;
+  }
+}
+```
+
+O `useEffect` também pode ser usado para monitorar um estado específico, de modo que sempre que esse estado for modificado, o efeito seja executado novamente.
+
+Neste exemplo, passamos [count] como segundo argumento para `useEffect`. Isso diz ao React para `"observar"` o estado count, e sempre que count for modificado, o efeito será executado novamente. Portanto, o título da página sempre será atualizado para refletir a nova contagem sempre que o botão for clicado.
+
+Além disso, temos uma função de limpeza que será executada quando o componente for desmontado, ou antes do próximo efeito ser executado. Esta função restabelece o título da página para 'React App'.
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `Você clicou ${count} vezes`;
+
+    // Função de limpeza
+    return () => {
+      document.title = "React App";
+    };
+  }, [count]); // monitorando o estado 'count'
+
+  return (
+    <div>
+      <p>Você clicou {count} vezes</p>
+      <button onClick={() => setCount(count + 1)}>Clique aqui</button>
+    </div>
+  );
+}
+```
+
+Quando **NÃO** usar o useEffect.
+
+- Cálculos Síncronos:
+
+Se você precisa fazer um cálculo síncrono baseado em props ou estado e usar o resultado na renderização, então useState combinado com a lógica normal de JavaScript dentro do corpo da função do componente é o caminho a percorrer. O useEffect é projetado para lidar com efeitos colaterais e é executado após a renderização, então não seria adequado para cálculos que precisam alterar o que é renderizado.
+
+> Exemplo de Mau Uso:
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+  const [doubleCount, setDoubleCount] = useState(0);
+
+  useEffect(() => {
+    setDoubleCount(count * 2); // mau uso: cálculo síncrono dentro de useEffect
+  }, [count]);
+
+  return (
+    <div>
+      <p>
+        O dobro de {count} é {doubleCount}
+      </p>
+      <button onClick={() => setCount(count + 1)}>Incrementar Contagem</button>
+    </div>
+  );
+}
+```
+
+No exemplo acima, estamos usando useEffect para calcular o dobro do valor de count sempre que count muda. Embora isso funcione, é um mau uso do useEffect porque o cálculo poderia ser feito diretamente no corpo da função do componente.
+
+> Exemplo de Bom Uso:
+
+```jsx
+import React, { useState } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+
+  const doubleCount = count * 2; // bom uso: cálculo síncrono fora do useEffect
+
+  return (
+    <div>
+      <p>
+        O dobro de {count} é {doubleCount}
+      </p>
+      <button onClick={() => setCount(count + 1)}>Incrementar Contagem</button>
+    </div>
+  );
+}
+```
+
+- Operações de Bloqueio:
+
+O `useEffect` é executado após a renderização, então qualquer operação que bloqueia a execução do JavaScript fará com que a interface do usuário pareça lenta ou não responsiva. Isso inclui coisas como operações de sincronização pesadas ou uso de métodos como alert ou confirm que bloqueiam a execução até que o usuário responda.
+
+> Exemplo de Mau Uso:
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    alert(`Você clicou ${count} vezes`); // mau uso: operação de bloqueio dentro do useEffect
+  }, [count]);
+
+  return (
+    <div>
+      <p>Você clicou {count} vezes</p>
+      <button onClick={() => setCount(count + 1)}>Clique aqui</button>
+    </div>
+  );
+}
+```
+
+No exemplo acima, estamos usando `alert` dentro do `useEffect`, o que é uma má prática. O `alert` é uma operação de bloqueio porque suspende a execução do JavaScript até que o usuário feche a caixa de diálogo.
+
+> Exemplo de Bom Uso:
+
+```jsx
+import React, { useState } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    const newCount = count + 1;
+    setCount(newCount);
+    alert(`Você clicou ${newCount} vezes`); // bom uso: operação de bloqueio dentro do manipulador de evento
+  };
+
+  return (
+    <div>
+      <p>Você clicou {count} vezes</p>
+      <button onClick={handleClick}>Clique aqui</button>
+    </div>
+  );
+}
+```
+
+O `alert` é disparado quando o usuário clica no botão, não após a renderização do componente. Isso torna o código mais eficiente e menos propenso a problemas de desempenho.
+
+No entanto, em geral, é melhor evitar operações de bloqueio como `alert` em aplicativos da web modernos, pois elas podem levar a uma experiência de usuário ruim. Considere usar uma solução alternativa, como uma modal ou uma notificação que não bloqueie a execução do JavaScript.
+
+- Efeitos Colaterais Síncronos que Causam Atualizações de Estado:
+
+Se o efeito colateral pode causar uma atualização de estado e é executado síncronamente, ele pode causar uma renderização adicional que pode levar a um ciclo infinito. Por exemplo, atualizando o estado diretamente dentro de um useEffect sem uma lista de dependências ou uma condição de saída.
+
+> Exemplo de Mau Uso:
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setCount(count + 1); // mau uso: atualizando o estado síncronamente dentro do useEffect
+  }); // sem lista de dependências, isso irá criar um loop infinito
+
+  return (
+    <div>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+No exemplo acima, a função setCount é chamada dentro do useEffect sem uma lista de dependências. Isso causará um loop infinito porque a atualização do estado irá disparar uma nova renderização, que por sua vez disparará o efeito novamente, e assim por diante.
+
+> Exemplo de Bom Uso:
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (count < 10) {
+      setCount(count + 1); // bom uso: atualizando o estado síncronamente dentro do useEffect com uma condição de saída
+    }
+  }, [count]); // adicionando count à lista de dependências para evitar o loop infinito
+
+  return (
+    <div>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+- Dependências Omitidas Intencionalmente:
+
+Às vezes, você pode querer omitir intencionalmente uma dependência de um efeito. No entanto, se você fizer isso, pode encontrar bugs que são difíceis de depurar. Se uma variável é usada dentro de um efeito, ela deve estar listada nas dependências.
+
+> Exemplo de Mau Uso:
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+  const [factor, setFactor] = useState(2);
+
+  useEffect(() => {
+    setCount(count * factor); // mau uso: omitindo 'factor' das dependências
+  }, [count]); // 'factor' deveria estar listado aqui
+
+  return (
+    <div>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+No exemplo acima, estamos utilizando factor dentro do useEffect, mas não o incluímos na lista de dependências. Isso pode levar a bugs, pois useEffect não será disparado se factor mudar, o que significa que a contagem pode não ser atualizada corretamente.
+
+> Exemplo de Bom Uso:
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+  const [factor, setFactor] = useState(2);
+
+  useEffect(() => {
+    setCount(count * factor); // bom uso: todas as dependências estão listadas
+  }, [count, factor]); // 'factor' está listado aqui
+
+  return (
+    <div>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+- Substituição de Todos os Métodos de Ciclo de Vida do Componente de Classe:
+
+`useEffect` é poderoso, mas não é uma substituição direta para todos os métodos de ciclo de vida do componente de classe (como `shouldComponentUpdate`, por exemplo). Tente usar a combinação de diferentes Hooks para obter o comportamento desejado.
+
+> Exemplo de Mau Uso:
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (count < 5) {
+      return; // tentativa de imitar shouldComponentUpdate com useEffect
+    }
+    // restante do código do efeito
+  }, [count]);
+
+  return (
+    <div>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+No exemplo acima, estamos tentando usar `useEffect` para imitar o comportamento do `shouldComponentUpdate` de um componente de classe. No entanto, isso não funciona como esperado, porque o `useEffect` é executado após a renderização, não antes. Portanto, não podemos usar `useEffect` para evitar a renderização baseada em uma condição.
+
+> Exemplo de Bom Uso:
+
+```jsx
+import React, { useState, useMemo } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+
+  const shouldUpdate = useMemo(() => count >= 5, [count]);
+
+  if (!shouldUpdate) {
+    return null; // retorna null para evitar renderização
+  }
+
+  return (
+    <div>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+No exemplo corrigido, usamos o Hook `useMemo` para calcular um valor `shouldUpdat`e sempre que count muda. Este valor é verdadeiro se count for maior ou igual a 5, e falso caso contrário. Então, nós usamos este valor para decidir se devemos renderizar o componente ou não.
+
+Esta é uma maneira mais eficiente de imitar o comportamento do `shouldComponentUpdate` com Hooks. No entanto, lembre-se que este é apenas um exemplo simples. Na prática, pode haver outras maneiras de otimizar a renderização do seu componente, dependendo da sua lógica específica.
+
+&nbsp;
+
+### ❗ 3 - Evitando o Prop drilling
+
+&nbsp;
+
+`"Prop drilling"` é um termo usado na comunidade React para descrever o processo de obtenção de dados para componentes em níveis mais profundos da árvore de componentes. Isso envolve passar props através de vários componentes que podem não necessariamente precisar desses dados, mas servem como intermediários para passar os dados para componentes filhos mais abaixo na árvore de componentes.
+
+Vamos considerar um exemplo simples para entender melhor.
+
+```jsx
+export function ComponenteA(props) {
+  return <ComponenteB user={props.user} />;
+}
+
+export function ComponenteB(props) {
+  return <ComponenteC user={props.user} />;
+}
+
+export function ComponenteC(props) {
+  return <p>Olá, {props.user.name}!</p>;
+}
+```
+
+No exemplo acima, a `ComponenteA` recebe uma `prop user` que é passada para `ComponenteB`, que por sua vez passa para `ComponenteC`. Embora `ComponenteB` não use a `prop user`, ele precisa aceitá-la e passá-la adiante para `ComponenteC`. Esse é o `"prop drilling"`.
+
+A desvantagem do `prop drilling` é que pode tornar o código difícil de manter e entender, especialmente se a árvore de componentes é muito grande e/ou os props precisam ser passados para componentes muito profundos na árvore.
+
+Para evitar `prop drilling`, muitas vezes é utilizada a `Context API` do React ou bibliotecas como `Redux` ou `MobX`, que permitem que você acesse os dados diretamente de qualquer componente, sem precisar passá-los manualmente através de todos os componentes intermediários.
+
+&nbsp;
+
+### ❗ 4 - Context API
+
+&nbsp;
+
+O `Context API` é uma ferramenta do React que facilita o `compartilhamento de estado` e outros dados entre vários componentes sem a necessidade de passá-los explicitamente por meio de props. Isso é especialmente útil quando você precisa compartilhar dados entre componentes que estão em diferentes níveis de aninhamento.
+
+Vamos entender isso com um exemplo. Suponha que temos um tema que queremos compartilhar entre vários componentes em nossa aplicação:
+
+Primeiro, precisamos criar um contexto. No React, criamos um contexto usando `React.createContext()`.
+
+```jsx
+import React from "react";
+
+const ThemeContext = React.createContext();
+```
+
+Depois de criar um contexto, nós o fornecemos usando um `Provider`. O `Provider` aceita um valor de propriedade que contém o valor atual do contexto.
+
+```jsx
+import React from "react";
+import { ThemeContext } from "./ThemeContext";
+
+function App() {
+  return (
+    <ThemeContext.Provider value="dark">
+      <ComponentA />
+    </ThemeContext.Provider>
+  );
+}
+```
+
+Neste exemplo, todos os componentes filhos de `<App />` terão acesso ao valor atual do `ThemeContext`, que é `"dark"`.
+
+Dentro de um componente filho, podemos acessar o valor do contexto usando o `Hook React.useContext()`.
+
+```jsx
+import React from "react";
+import { ThemeContext } from "./ThemeContext";
+
+function ComponentA() {
+  const theme = React.useContext(ThemeContext);
+
+  return <div>The current theme is: {theme}</div>;
+}
+```
+
+Em `ComponentA`, estamos usando `React.useContext()` para acessar o valor do `ThemeContext`. O valor que obtemos é `"dark`", que é o valor atual que definimos no `ThemeContext.Provider` no componente App.
+
+O `Context API` pode ser uma ferramenta muito útil para `gerenciar o estado da aplicação` em vários componentes `sem a necessidade` de passar explicitamente `props` por muitos níveis de componentes aninhados.
 
 &nbsp;
 

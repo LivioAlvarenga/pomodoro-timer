@@ -1,7 +1,15 @@
+'use client'
+
+import { CyclesContext } from '@/contexts/CyclesContext'
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+import { useContext } from 'react'
 import { TableData } from './TableData'
 import { TableHeader } from './TableHeader'
 
 export default function History() {
+  const { cycles } = useContext(CyclesContext)
+
   return (
     <div className="wrapper flex flex-1 flex-col p-3 lg:p-14">
       <h1 className="headline6 sm:headline4 lg:headline2 mt-5 font-playfair400 text-gray-100">
@@ -18,66 +26,29 @@ export default function History() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <TableData>Projeto de Timer</TableData>
-              <TableData>25</TableData>
-              <TableData>10:00</TableData>
-              <TableData statusColor={'yellow'}>Concluído</TableData>
-            </tr>
-            <tr>
-              <TableData>Projeto de Timer com Nextjs</TableData>
-              <TableData>25</TableData>
-              <TableData>10:00</TableData>
-              <TableData statusColor={'red'}>Concluído</TableData>
-            </tr>
-            <tr>
-              <TableData>Projeto de Timer</TableData>
-              <TableData>25</TableData>
-              <TableData>10:00</TableData>
-              <TableData statusColor={'green'}>Concluído</TableData>
-            </tr>
-            <tr>
-              <TableData>Projeto de Timer com Nextjs</TableData>
-              <TableData>25</TableData>
-              <TableData>10:00</TableData>
-              <TableData>Concluído</TableData>
-            </tr>
-            <tr>
-              <TableData>Projeto de Timer</TableData>
-              <TableData>25</TableData>
-              <TableData>10:00</TableData>
-              <TableData>Concluído</TableData>
-            </tr>
-            <tr>
-              <TableData>Projeto de Timer com Nextjs</TableData>
-              <TableData>25</TableData>
-              <TableData>10:00</TableData>
-              <TableData>Concluído</TableData>
-            </tr>
-            <tr>
-              <TableData>Projeto de Timer</TableData>
-              <TableData>25</TableData>
-              <TableData>10:00</TableData>
-              <TableData>Concluído</TableData>
-            </tr>
-            <tr>
-              <TableData>Projeto de Timer com Nextjs</TableData>
-              <TableData>25</TableData>
-              <TableData>10:00</TableData>
-              <TableData>Concluído</TableData>
-            </tr>
-            <tr>
-              <TableData>Projeto de Timer</TableData>
-              <TableData>25</TableData>
-              <TableData>10:00</TableData>
-              <TableData>Concluído</TableData>
-            </tr>
-            <tr>
-              <TableData>Projeto de Timer com Nextjs</TableData>
-              <TableData>25</TableData>
-              <TableData>10:00</TableData>
-              <TableData>Concluído</TableData>
-            </tr>
+            {cycles.map((cycle) => (
+              <tr key={cycle.id}>
+                <TableData>{cycle.task}</TableData>
+                <TableData>{cycle.minutesAmount} minutos</TableData>
+                <TableData>
+                  {formatDistanceToNow(cycle.startedAt, {
+                    addSuffix: true,
+                    locale: ptBR,
+                  })}
+                </TableData>
+                {cycle.finishedAt && (
+                  <TableData statusColor={'green'}>Concluído</TableData>
+                )}
+
+                {cycle.interruptedAt && (
+                  <TableData statusColor={'red'}>Interrompido</TableData>
+                )}
+
+                {!cycle.finishedAt && !cycle.interruptedAt && (
+                  <TableData statusColor={'yellow'}>Em andamento</TableData>
+                )}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
