@@ -708,6 +708,142 @@ O `Context API` pode ser uma ferramenta muito útil para `gerenciar o estado da 
 
 &nbsp;
 
+### ❗ 5 - useState Vs useReducer
+
+&nbsp;
+
+O `useReducer()` é um hook do React que é usado para o gerenciamento de estado. Similar ao `useState`, o `useReducer` permite que você manipule e controle o estado de seu componente. No entanto, o `useReducer` é tipicamente preferido quando você `tem lógica de estado complexa` que envolve `múltiplos sub-valores` ou quando o `próximo estado depende do anterior`. Ele também permite que você otimize a performance para componentes que acionam atualizações profundas porque você pode enviar ações no lugar de callbacks.
+
+Vamos ver a sintaxe do `useReducer`:
+
+```jsx
+const [state, dispatch] = useReducer(reducer, initialState);
+```
+
+O `useReducer` aceita um `reducer` e um `initialState` como argumentos e retorna o estado atual e uma função de despacho (`dispatch`). A função de despacho pode ser usada para despachar ações que são capturadas pelo reducer.
+
+Aqui está um exemplo simples de como usar `useReducer`:
+
+```jsx
+import React, { useReducer } from "react";
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+}
+
+export function Teste() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <>
+      Contagem: {state.count}
+      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+    </>
+  );
+}
+```
+
+No exemplo acima, temos um estado inicial {count: 0} e um `reducer` que manipula duas ações: `increment` e `decrement`. No componente Teste, usamos `useReducer` para obter o estado atual e a função de despacho. Usamos essa função de despacho para despachar ações quando os botões são clicados.
+
+Em comparação, aqui está como você pode fazer algo semelhante com `useState`:
+
+```jsx
+import React, { useState } from "react";
+
+export function Teste() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <>
+      Contagem: {count}
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <button onClick={() => setCount(count - 1)}>-</button>
+    </>
+  );
+}
+```
+
+Ambos os exemplos `fazem basicamente a mesma coisa`. No entanto, você pode notar que a versão `useState` é um **pouco mais simples** e direta para este caso de uso. Como regra geral, se o estado de seu componente é simples (por exemplo, um único valor que pode ser incrementado ou decrementado), `useState` é uma boa opção. Se o seu estado é mais complexo ou depende do estado anterior, `useReducer` pode ser mais apropriado.
+
+O `useReducer` tende a ser mais útil em situações onde a `lógica do estado é mais complexa` ou quando há valores múltiplos interdependentes. Ele também pode ser uma boa escolha quando você deseja organizar sua lógica de estado em ações e reduções de estado, tornando-a mais previsível e testável.
+
+Vamos considerar um exemplo de um formulário com vários campos de input. A lógica de estado aqui pode se tornar complexa rapidamente, pois o estado de cada campo de input pode depender do valor de outros campos.
+
+Aqui está um exemplo de como isso pode ser feito com `useReducer`:
+
+```jsx
+import React, { useReducer } from "react";
+
+const initialState = {
+  nome: "",
+  sobrenome: "",
+  idade: "",
+  email: "",
+};
+
+function reducer(state, action) {
+  return {
+    ...state,
+    [action.field]: action.value,
+  };
+}
+
+export function Formulario() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const onChange = (e) => {
+    dispatch({ field: e.target.name, value: e.target.value });
+  };
+
+  return (
+    <form>
+      <input
+        name="nome"
+        value={state.nome}
+        onChange={onChange}
+        placeholder="Nome"
+      />
+      <input
+        name="sobrenome"
+        value={state.sobrenome}
+        onChange={onChange}
+        placeholder="Sobrenome"
+      />
+      <input
+        name="idade"
+        value={state.idade}
+        onChange={onChange}
+        placeholder="Idade"
+      />
+      <input
+        name="email"
+        value={state.email}
+        onChange={onChange}
+        placeholder="Email"
+      />
+    </form>
+  );
+}
+```
+
+No exemplo acima, usamos `useReducer` para gerenciar o estado de vários campos de input. Nós despachamos uma ação sempre que um campo de input muda, atualizando o estado desse campo específico.
+
+Fazer algo semelhante com `useState` seria mais complicado. Você precisaria chamar `useState` para cada campo de input e gerenciar o estado de cada um individualmente, o que rapidamente se torna confuso e difícil de gerenciar.
+
+O `useReducer` também pode ser útil quando você precisa saber sobre o estado anterior para calcular o novo estado. Um exemplo disso seria quando você está implementando algo como um contador que pode ser incrementado, decrementado, dobrado, ou resetado para um valor inicial.
+
+Em suma, `useState` é frequentemente mais apropriado para estados simples, enquanto `useReducer` é uma boa escolha para lógica de estado mais complexa.
+
 ---
 
 &nbsp;
