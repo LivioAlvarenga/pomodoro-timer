@@ -1,6 +1,6 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { CyclesContextProvider } from '@/contexts/CyclesContext'
+import { CyclesContextWithoutUseClient } from '@/contexts/CyclesContextWithoutUseClient'
 import { inter400, inter700, playfair400, robotoMono700 } from '@/styles/fonts'
 import '@/styles/globals.css'
 import { Metadata } from 'next'
@@ -91,7 +91,9 @@ export default function RootLayout({
         className={`${inter400.variable} ${inter700.variable} ${playfair400.variable} ${robotoMono700.variable} flex min-h-screen flex-col scroll-smooth bg-dark-700 font-inter400 text-base font-normal leading-normal tracking-[.031rem] text-gray-300 selection:bg-primary selection:text-tWhite`}
       >
         <Header />
-        <CyclesContextProvider>{children}</CyclesContextProvider>
+        <CyclesContextWithoutUseClient>
+          {children}
+        </CyclesContextWithoutUseClient>
         <Footer />
       </body>
     </html>

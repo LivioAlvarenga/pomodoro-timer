@@ -15,7 +15,7 @@ import {
   useState,
 } from 'react'
 
-interface CyclesContextProviderProps {
+export interface CyclesContextProviderProps {
   children: ReactNode
 }
 
