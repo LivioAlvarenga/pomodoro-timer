@@ -47,12 +47,14 @@ export function CyclesContextProvider({
       activeCycleId: null,
     },
     (initialState) => {
-      const storedStateAsJSON = localStorage.getItem(
-        '@livio-timer:cycles-state-1.0.0',
-      )
+      if (typeof window !== 'undefined') {
+        const storedStateAsJSON = localStorage.getItem(
+          '@livio-timer:cycles-state-1.0.0',
+        )
 
-      if (storedStateAsJSON) {
-        return JSON.parse(storedStateAsJSON)
+        if (storedStateAsJSON) {
+          return JSON.parse(storedStateAsJSON)
+        }
       }
 
       return initialState
@@ -73,7 +75,9 @@ export function CyclesContextProvider({
   useEffect(() => {
     const stateJSON = JSON.stringify(cyclesStates)
 
-    localStorage.setItem('@livio-timer:cycles-state-1.0.0', stateJSON)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('@livio-timer:cycles-state-1.0.0', stateJSON)
+    }
   }, [cyclesStates])
 
   function setSecondsPassed(seconds: number) {
