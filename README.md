@@ -1,5 +1,5 @@
 <h1 align="center"> 
-	Projeto de Timer com Nextjs 13 App Router, React, Typescript e Tailwindcss.
+	Projeto de Pomodoro Timer com Nextjs 13 App Router, React, Typescript e Tailwindcss.
 </h1>
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
@@ -25,7 +25,19 @@
 
 ## 💻 Sobre o projeto
 
-🚀 Em construção.
+🚀 Olá, sou Livio Alvarenga, um desenvolvedor Full Stack. Hoje, tenho o prazer de apresentar a vocês uma poderosa ferramenta que desenvolvi - o Pomodoro Timer. Utilizando tecnologias modernas como NodeJs, TypeScript, JavaScript, NextJs e React, esse aplicativo oferece uma maneira eficiente de gerenciar suas tarefas e tempo.
+
+Com o Pomodoro Timer, você pode inserir tarefas, definir a duração e acompanhar o progresso em tempo real. Projetado com uma interface intuitiva, o aplicativo permite que você inicie, interrompa e visualize o tempo restante das tarefas diretamente no timer ou na barra de título. Cada tarefa, uma vez inserida, pode ser acompanhada em termos de status - concluída, em andamento ou interrompida. Tudo isso com a conveniência de ter seus dados armazenados no localStorage para referência futura.
+
+Também incorporei uma página de histórico do timer, onde você pode visualizar detalhes de todas as suas tarefas, incluindo duração, início e status.
+
+Esse repositório é uma oportunidade para eu compartilhar com outros desenvolvedores o conhecimento e as habilidades que adquiri. As tecnologias que escolhi para este projeto, além das já mencionadas, incluem React Hook Form, Tailwind, ZodJs, ESLint e Prettier.
+
+Eu defini algumas regras de negócio que devem ser observadas: a tarefa e a duração devem ser definidas antes de iniciar o timer, e uma tarefa em andamento deve ser interrompida antes de começar uma nova.
+
+Além disso, aproveitei este projeto para discutir tópicos técnicos importantes, como Formulários Controlados versus Não Controlados, o uso do hook useEffect, a evitação do Prop Drilling, as diferenças entre useState e useReducer, e o uso da Context API.
+
+Convido vocês a conferirem o aplicativo em funcionamento no seguinte link, hospedado pela Vercel: Pomodoro Timer. Explore o código, aprenda com ele e, se sentir vontade, contribua também. Seja bem-vindo ao meu universo de codificação!
 
 &nbsp;
 
@@ -38,7 +50,7 @@
 <p>
 
 <p align="center">
-  <a href= "#"><img alt="deploy badge Vercel" height=40 src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/vercel-badge.svg"></a>
+  <a href= "https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/"><img alt="deploy badge Vercel" height=40 src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/vercel-badge.svg"></a>
 <p>
 
 &nbsp;
@@ -51,9 +63,9 @@
 
 ## 📺 Vitrine Dev
 
-| :placard: Vitrine.Dev |                                                                                                |
-| --------------------- | ---------------------------------------------------------------------------------------------- |
-| :sparkles: Nome       | **Projeto de Timer com Nextjs 13 App Router, React, Typescript e Tailwindcss.**                |
+| :placard: Vitrine.Dev |                                                                                                                 |
+| --------------------- | --------------------------------------------------------------------------------------------------------------- |
+| :sparkles: Nome       | **Projeto de Timer com Nextjs 13 App Router, React, Typescript e Tailwindcss.**                                 |
 | :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, EsLint e prettier. |
 
 ---
