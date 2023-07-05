@@ -19,17 +19,17 @@ export const metadata: Metadata = {
     title: 'Pomodoro Timer por Livio Alvarenga | Gestão de Tarefas e Tempo',
     description:
       'O Pomodoro Timer de Livio Alvarenga é uma ferramenta de gestão de tempo altamente eficaz. Desenvolvido com tecnologias modernas como NodeJs, TypeScript, JavaScript, Nextjs, React e outros, este aplicativo permite inserir tarefas e gerenciar seu tempo com eficácia. Experimente a funcionalidade do timer e veja seu progresso em tempo real.',
-    url: 'https://github.com/LivioAlvarenga/pomodoro-timer',
+    url: 'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app',
     siteName: 'Pomodoro Timer por Livio Alvarenga',
     images: [
       {
-        url: 'https://github.com/LivioAlvarenga/pomodoro-timer/logo-og-800-600.png',
+        url: 'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/logo-og-800-600.png',
         width: 800,
         height: 600,
         alt: 'Logo do desenvolver fullstack Livio Alvarenga',
       },
       {
-        url: 'https://github.com/LivioAlvarenga/pomodoro-timer/logo-og-1800-1600.png',
+        url: 'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/logo-og-1800-1600.png',
         width: 1800,
         height: 1600,
         alt: 'Logo do desenvolver fullstack Livio Alvarenga',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     creator: '@AlvarengaLivio',
     creatorId: 'https://twitter.com/AlvarengaLivio',
     images: [
-      'https://github.com/LivioAlvarenga/pomodoro-timer/logo-og-800-600.png',
+      'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/logo-og-800-600.png',
     ],
   },
   viewport: {
@@ -72,9 +72,9 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code', // ! TODO: Change this
   },
   alternates: {
-    canonical: 'https://github.com/LivioAlvarenga/pomodoro-timer/',
+    canonical: 'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/',
     languages: {
-      'pt-BR': 'https://github.com/LivioAlvarenga/pomodoro-timer/',
+      'pt-BR': 'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/',
     },
   },
   category: 'Gestão de Tempo e Tarefas',

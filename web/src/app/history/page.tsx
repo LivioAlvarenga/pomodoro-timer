@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Pomodoro Timer por Livio Alvarenga | Histórico do Timer',
     description:
       'Este é o repositório do Pomodoro Timer do portfólio de Livio Alvarenga, desenvolvedor fullstack. Ele apresenta uma página de histórico do timer com uma tabela exibindo tarefas, duração, início e status. Este repositório é uma forma de mostrar e compartilhar o meu conhecimento com outros desenvolvedores.',
-    url: 'https://oldboyscustomgarage.com.br/gallery',
+    url: 'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/history',
     type: 'website', // as it's a main page, keep it as a website
   },
   twitter: {
@@ -23,7 +23,8 @@ export const metadata: Metadata = {
   },
   alternates: {
     ...metadataHome.alternates, // extend the common alternates metadata
-    canonical: 'https://github.com/LivioAlvarenga/pomodoro-timer/history',
+    canonical:
+      'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/history',
   },
 }
 
