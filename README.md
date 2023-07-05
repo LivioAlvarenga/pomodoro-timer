@@ -15,9 +15,11 @@
 
 &nbsp;
 
-![react-post-with-comment](https://github.com/LivioAlvarenga/react-post-with-comment/blob/main/web/public/Monitor_laptop_Tablet_Celular-Fundos_limpos.png?raw=true#vitrinedev)
+![timer-responsivo](https://raw.githubusercontent.com/LivioAlvarenga/pomodoro-timer/main/files/Monitor_laptop_Tablet_Celular-Fundos_limpos.png#vitrinedev)
 
-![react-post-with-comment](https://github.com/LivioAlvarenga/react-post-with-comment/blob/main/web/public/phone-hand-laptop.png?raw=true)
+![timer-home](https://raw.githubusercontent.com/LivioAlvarenga/pomodoro-timer/main/files/home-timer.png)
+
+![timer-history](https://raw.githubusercontent.com/LivioAlvarenga/pomodoro-timer/main/files/history-timer.png)
 
 <a id="-sobre-o-projeto"></a>
 
@@ -52,7 +54,7 @@
 | :placard: Vitrine.Dev |                                                                                                |
 | --------------------- | ---------------------------------------------------------------------------------------------- |
 | :sparkles: Nome       | **Projeto de Timer com Nextjs 13 App Router, React, Typescript e Tailwindcss.**                |
-| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, Tailwind, ZodJs, EsLint e prettier. |
+| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, EsLint e prettier. |
 
 ---
 
@@ -72,9 +74,10 @@ As seguintes ferramentas foram usadas na construção do projeto
   <a href= "https://www.javascript.com/" target="_blank" rel="noopener noreferrer"><img alt="JavaScript badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/javascript-badge.svg"></a>
   <a href= "https://nextjs.org/"><img alt="Next.js badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/d0444795ba750206fa52326b03a097df76171407/files/nextjs-badge.svg"></a>
   <a href= "https://reactjs.org/"><img alt="React badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/d0444795ba750206fa52326b03a097df76171407/files/react-badge.svg"></a>
+  <a href= "https://www.react-hook-form.com/"><img alt="React Hook Form badge" src="https://img.shields.io/static/v1?logoWidth=15&logoColor=EC5990&logo=reacthookform&label=Form management library for React&message=React Hook Form&color=EC5990"></a>
   <a href= "https://tailwindcss.com/"><img alt="Tailwind CSS badge" src="https://img.shields.io/static/v1?logoWidth=15&logoColor=06b6d4&logo=Tailwind CSS&label=Style&message=Tailwind CSS&color=06b6d4"></a>
   <a href= "https://zod.dev/" target="_blank" rel="noopener noreferrer"><img alt="ZOD badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/7caba2f743ee9b61f0225a22da57466ecb67097c/files/zod-badge.svg"></a>
-  <a href= "https://www.figma.com/file/rgvSDkLZwAPEUJB1gX2AFR/Ignite-Timer-(Community)-(Copy)?node-id=0%3A1&mode=dev"><img alt="link projeto no figma" src="https://github.com/LivioAlvarenga/LivioAlvarenga/blob/main/files/figma-badge.svg"></a>
+  <a href= "https://www.figma.com/file/rgvSDkLZwAPEUJB1gX2AFR/Ignite-Timer-(Community)-(Copy)?node-id=0%3A1&mode=dev"><img alt="link projeto no figma" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/figma-badge.svg"></a>
   <a href= "https://code.visualstudio.com/download" target="_blank" rel="noopener noreferrer"><img alt="vscode download" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/vsCode-badge.svg"></a>
   <a href= "https://github.com/prettier/prettier" target="_blank" rel="noopener noreferrer"><img alt="code formatter prettier" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/prettier-badge.svg"></a>
   <a href= "https://eslint.org/" target="_blank" rel="noopener noreferrer"><img alt="code standardization eslint" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/59575ed19b13121cd113cfc66a71f18dea210c79/files/eslint-badge.svg"></a>
