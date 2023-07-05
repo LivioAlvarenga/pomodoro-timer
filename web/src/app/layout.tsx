@@ -8,31 +8,31 @@ import React from 'react'
 
 export const metadata: Metadata = {
   title: {
-    default: 'NextJs 13 Project Template | Configuração e Início Rápidos',
-    template: 'NextJs 13 Project Template | %s',
+    default: 'Pomodoro Timer por Livio Alvarenga | Gestão de Tarefas e Tempo',
+    template: 'Pomodoro Timer por Livio Alvarenga | %s',
   },
   description:
-    'Inicie rapidamente seu projeto com nosso template para NextJs 13. Pré-configurado com NodeJs, TypeScript, JavaScript, React, Tailwind, Dotenv, ZodJs, EsLint e Prettier, este template acelera seu fluxo de trabalho e permite que você se concentre no que realmente importa.',
+    'O Pomodoro Timer de Livio Alvarenga é uma ferramenta de gestão de tempo altamente eficaz. Desenvolvido com tecnologias modernas como NodeJs, TypeScript, JavaScript, Nextjs, React e outros, este aplicativo permite inserir tarefas e gerenciar seu tempo com eficácia. Experimente a funcionalidade do timer e veja seu progresso em tempo real.',
   keywords:
-    'NextJs 13, NodeJs, TypeScript, JavaScript, React, Tailwind, Dotenv, ZodJs, EsLint, Prettier, Template de Projeto, Configuração Rápida, Início Rápido',
+    'Pomodoro Timer, Gestão de Tempo, Gestão de Tarefas, NodeJs, TypeScript, JavaScript, Nextjs, React, Livio Alvarenga, Portfolio, Desenvolvedor FullStack',
   openGraph: {
-    title: 'NextJs 13 Project Template | Configuração e Início Rápidos',
+    title: 'Pomodoro Timer por Livio Alvarenga | Gestão de Tarefas e Tempo',
     description:
-      'Inicie rapidamente seu projeto com nosso template para NextJs 13. Pré-configurado com NodeJs, TypeScript, JavaScript, React, Tailwind, Dotenv, ZodJs, EsLint e Prettier, este template acelera seu fluxo de trabalho e permite que você se concentre no que realmente importa.',
-    url: 'https://https://seu.dominio.br',
-    siteName: 'NextJs 13 Project Template',
+      'O Pomodoro Timer de Livio Alvarenga é uma ferramenta de gestão de tempo altamente eficaz. Desenvolvido com tecnologias modernas como NodeJs, TypeScript, JavaScript, Nextjs, React e outros, este aplicativo permite inserir tarefas e gerenciar seu tempo com eficácia. Experimente a funcionalidade do timer e veja seu progresso em tempo real.',
+    url: 'https://github.com/LivioAlvarenga/pomodoro-timer',
+    siteName: 'Pomodoro Timer por Livio Alvarenga',
     images: [
       {
-        url: 'https://https://seu.dominio.br/logo-og-800-600.png',
+        url: 'https://github.com/LivioAlvarenga/pomodoro-timer/logo-og-800-600.png',
         width: 800,
         height: 600,
-        alt: 'Logo do NextJs 13 Project Template',
+        alt: 'Logo do desenvolver fullstack Livio Alvarenga',
       },
       {
-        url: 'https://https://seu.dominio.br/logo-og-1800-1600.png',
+        url: 'https://github.com/LivioAlvarenga/pomodoro-timer/logo-og-1800-1600.png',
         width: 1800,
         height: 1600,
-        alt: 'Logo do NextJs 13 Project Template',
+        alt: 'Logo do desenvolver fullstack Livio Alvarenga',
       },
     ],
     locale: 'pt_BR',
@@ -55,12 +55,14 @@ export const metadata: Metadata = {
   ],
   twitter: {
     card: 'summary_large_image',
-    title: 'NextJs 13 Project Template | Configuração e Início Rápidos',
+    title: 'Pomodoro Timer por Livio Alvarenga | Gestão de Tarefas e Tempo',
     description:
-      'Inicie rapidamente seu projeto com nosso template para NextJs 13. Pré-configurado com NodeJs, TypeScript, JavaScript, React, Tailwind, Dotenv, ZodJs, EsLint e Prettier, este template acelera seu fluxo de trabalho e permite que você se concentre no que realmente importa.',
-    creator: '@your-twitter-account',
-    creatorId: 'https://twitter.com/your-twitter-account', // ! TODO: Change this
-    images: ['https://seu.dominio.br/logo-og-800-600.png'],
+      'O Pomodoro Timer de Livio Alvarenga é uma ferramenta de gestão de tempo altamente eficaz. Desenvolvido com tecnologias modernas como NodeJs, TypeScript, JavaScript, Nextjs, React e outros, este aplicativo permite inserir tarefas e gerenciar seu tempo com eficácia. Experimente a funcionalidade do timer e veja seu progresso em tempo real.',
+    creator: '@AlvarengaLivio',
+    creatorId: 'https://twitter.com/AlvarengaLivio',
+    images: [
+      'https://github.com/LivioAlvarenga/pomodoro-timer/logo-og-800-600.png',
+    ],
   },
   viewport: {
     width: 'device-width',
@@ -70,12 +72,12 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code', // ! TODO: Change this
   },
   alternates: {
-    canonical: 'https://https://seu.dominio.br',
+    canonical: 'https://github.com/LivioAlvarenga/pomodoro-timer/',
     languages: {
-      'pt-BR': 'https://https://seu.dominio.br',
+      'pt-BR': 'https://github.com/LivioAlvarenga/pomodoro-timer/',
     },
   },
-  category: 'Software Development',
+  category: 'Gestão de Tempo e Tarefas',
 }
 
 export default function RootLayout({
