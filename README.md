@@ -165,24 +165,34 @@ npm install zod # Install zod to use types in NodeJs and validate data
 
 ### RF - Requisitos Funcionais
 
-- Deve ser possível ...;
-- Deve ser possível ...;
+- Deve ser possível inserir uma tarefa e tempo de duração da tarefa;
+- Deve ser possível iniciar o timer;
+- Deve ser possível interromper o timer;
+- Deve ser possível ver o histórico de tarefas;
+- Deve ser possível ver o tempo restante da tarefa no timer e barra de titulo;
+- Deve ser possível armazenar os dados no localStorage;
+- Deve ser possível ver o status de cada tarefa como concluída, em andamento ou interrompida;
 
 ### RN - Regras de Negócio
 
-- O usuário não pode ...;
-- O usuário não pode ...;
+- O usuário não pode não pode começar uma tarefa sem inserir o nome da tarefa e o tempo de duração;
+- O usuário não pode começar outra tarefa sem interromper a tarefa atual;
 
 ### RNF - Requisitos Não Funcionais
 
 - Uso de Zod para validação de dados de entrada;
 - Uso de Eslint para padronização de código;
 - Uso de Prettier para padronização de código;
-- Uso de Dotenv para variáveis de ambiente;
 - Uso de TailwindCSS para estilização;
 - Uso de NextJs para SSR;
 - Uso de TypeScript para tipagem estática;
 - Uso de NextJs com App Router para rotas;
+- Uso Context API para compartilhar dados entre componentes;
+- Uso de CLSX para gerar classnames dinâmicos;
+- Uso de date-fns para manipulação de datas;
+- Uso de immer para manipulação de estados imutáveis;
+- Uso de lucide-react para ícones;
+- Uso de react-hook-form para formulários;
 
 &nbsp;
 
